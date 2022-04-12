@@ -1,0 +1,86 @@
+﻿@model IEnumerable<CommonLayer.Model.EmployeeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="header">
+    <img src="~/assets/logo.png" />
+    <div><span style="color: #82A70C">EMPLOYEE</span><br /><span style="color: #42515F">PAYROLL</span></div>
+</div>
+
+<div class="index">
+    <h3>Employee Details</h3>
+</div>
+
+<p class="btc">
+    <input type="button" onclick="location.href='@Url.Action("Create", "Employee")'" value="Create New Employee Data" class="btn btn-primary" />
+    @*<a style="color: #82A70C" asp-action="Create">Create New Employee Data</a>*@
+</p>
+<table style="background-color:#F2F3F4" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfileImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfileImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }, new { @style = "color: #82A70C;" })
+                    @*@Html.ActionLink("Details", "Details", new { id = item.EmployeeId }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId }, new { @style = "color:#ff0000;" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
